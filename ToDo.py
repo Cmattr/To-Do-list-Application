@@ -7,8 +7,13 @@ def add(add_task,to_do_list):
     to_do_list.append(f"{add_task}: incomplete")
 
 
-def remove(remove_task, to_do_list):
-    to_do_list.remove(f"{remove_task}: incomplete")
+def remove_incomplete(remove_task, to_do_list):
+    to_do_list.remove(f"{remove_task}: incomplete") 
+
+def remove_complete(remove_task, to_do_list):
+    to_do_list.remove(f"{remove_task}: complete") 
+
+
 
 
 while home_selection != '5':
@@ -28,15 +33,23 @@ while home_selection != '5':
 
     elif home_selection == '2':
         print(f"your current task \n {to_do_list}")
+    
     elif home_selection == '3':
-        completed = input("please enter the task you would like to mark complete")
-            
+        completed = input("please enter the task you would like to mark complete: ")
+        for i in range(len(to_do_list)):
+            if to_do_list [i] == (f"{completed}: incomplete"):
+                to_do_list [i] = (f"{completed}: complete")
+                print('Your task has been marked as completed')         
+    
     elif home_selection == '4':
-        try:
             remove_task = str(input("please enter the task you would like to remove: "))
-            remove(remove_task, to_do_list)
-            print(f"{remove_task} has been removed from your list of task")
-        except Exception():
-            print("please enter only the name of the item you would like to remove")    
+            status = str(input("please indicate if the task is complete or incomplete: "))
+            if status == "incomplete":
+                remove_incomplete(remove_task, to_do_list)
+                print(f"{remove_task} has been removed from your list of task") 
+            elif status == "complete":
+                remove_complete(remove_task, to_do_list)
+                print(f"{remove_task} has been reomved from your list of task")
+             
     else:
         pass
