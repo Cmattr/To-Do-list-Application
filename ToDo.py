@@ -25,22 +25,22 @@ while home_selection != '5':
     4. Delete a task
     5. Quit''')
     home_selection = input("please select an option by number: ")
-
+# add a task
     if home_selection == '1':
         add_task = str(input("please enter the task you would like to add: "))
         add(add_task, to_do_list)
         print(f"{add_task} has been added to the list of task")
-
+# View task
     elif home_selection == '2':
         print(f"your current task \n {to_do_list}")
-    
+# Mark Complete
     elif home_selection == '3':
         completed = input("please enter the task you would like to mark complete: ")
         for i in range(len(to_do_list)):
             if to_do_list [i] == (f"{completed}: incomplete"):
                 to_do_list [i] = (f"{completed}: complete")
                 print('Your task has been marked as completed')         
-    
+# remove task
     elif home_selection == '4':
             remove_task = str(input("please enter the task you would like to remove: "))
             status = str(input("please indicate if the task is complete or incomplete: "))
@@ -50,6 +50,6 @@ while home_selection != '5':
             elif status == "complete":
                 remove_complete(remove_task, to_do_list)
                 print(f"{remove_task} has been reomved from your list of task")
-             
+
     else:
         pass
